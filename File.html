@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Information Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #17ebe4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #555d9700;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #0bd2d2;
+      border-radius: 4px;
+    }
+
+    .dob-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dob-group select {
+      flex: 1;
+    }
+
+    .radio-group {
+      margin-bottom: 15px;
+    }
+
+    .radio-group label {
+      margin-right: 15px;
+      font-weight: normal;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #b601a4;
+      color: rgb(15, 194, 226);
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    input[type="reset"] {
+      background-color: #c87929;
+    }
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+      opacity: 0.9;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Form For Basic Information</h2>
+  <img src="/Asserts/download.png" alt="Logo" width="100" height="75" />
+
+  <form action="/submit" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="username">User Name:</label>
+    <input type="text" id="username" name="username" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+
+    <label for="mobile">Mobile No:</label>
+    <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" min="1" max="120" required />
+
+    <label>Date of Birth:</label>
+    <div class="dob-group">
+      <select name="dob_day" required>
+        <option value="" disabled selected>Day</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+
+      <select name="dob_month" required>
+        <option value="" disabled selected>Month</option>
+        <option>January</option>
+        <option>February</option>
+        <option>March</option>
+        <option>April</option>
+        <option>May</option>
+        <option>June</option>
+        <option>July</option>
+        <option>August</option>
+        <option>September</option>
+        <option>October</option>
+        <option>November</option>
+        <option>December</option>
+      </select>
+
+      <select name="dob_year" required>
+        <option value="" disabled selected>Year</option>
+        ${[...Array(16)].map((_, i) => `<option>${1990 + i}</option>`).join('')}
+      </select>
+    </div>
+
+    <label for="profession">Profession:</label>
+    <input type="text" id="profession" name="profession" required />
+
+    <label for="country">Country:</label>
+    <select id="country" name="country" required>
+      <option value="" disabled selected>Select your country</option>
+      <option>USA</option>
+      <option>Canada</option>
+      <option>UK</option>
+      <option>India</option>
+      <option>Other</option>
+    </select>
+
+    <label for="state">State:</label>
+    <select id="state" name="state" required>
+      <option value="" disabled selected>Select your state</option>
+      <option>Uttar Pradesh</option>
+      <option>Maharashtra</option>
+      <option>Bihar</option>
+      <option>West Bengal</option>
+      <option>Tamil Nadu</option>
+      <option>Uttarakhand</option>
+    </select>
+
+    <label>Hobbies:</label>
+    <div class="radio-group" select multiple>
+      <input type="radio" id="reading" name="hobby" value="Reading" />
+      <label for="reading">Reading</label>
+
+      <input type="radio" id="traveling" name="hobby" value="Traveling" />
+      <label for="traveling">Traveling</label>
+
+      <input type="radio" id="gaming" name="hobby" value="Gaming" />
+      <label for="gaming">Gaming</label>
+    </div>
+
+    <label for="religion">Religion:</label>
+    <select id="religion" name="religion" required>
+      <option value="" disabled selected>Select your Religion</option>
+      <option>Hinduism</option>
+      <option>Islam</option>
+      <option>Christianity</option>
+      <option>Sikhism</option>
+      <option>Other</option>
+    </select>
+
+    <br /><br />
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+  </form>
+</body>
+</html>
